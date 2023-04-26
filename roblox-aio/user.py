@@ -9,8 +9,12 @@ class User:
         
     async def change_display_name(self, name: str):
         data = {"newDisplayName": name}
-        _id = await authentication()
-        headers = {}
+        auth = authentication(cookie=self.cookie)
+        _id = await auth.get_auth()['id']
+        cookies = {
+			'.ROBLOSECURITY': self.cookie 
+		}
+		headers = {"x-csrf-token": await get_csrf_token(cookie=self.cookie)}
         async with aiohttp.ClientSession() as session:
             async with session.patch(f"{endpoints.users}/users/{_id}/display-names") as response:
                 r = await response.json()
