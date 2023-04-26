@@ -3,6 +3,8 @@ name: Install roblox-aio.py
 on: push
 
 jobs:
+  permissions:
+    id-token: write
   build-n-publish:
     name: Check out code
     runs-on: ubuntu-latest
