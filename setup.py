@@ -7,6 +7,6 @@ setup(
     author='RainzDev',
     author_email='jessrblx16@gmail.com',
     license='MIT',
-    packages=['roblox-aio.py'],
-    install_requires=['aiohttp'],
+    packages=['roblox-aio'],
+    install_requires=['numpy', 'aiohttp'],
 )
