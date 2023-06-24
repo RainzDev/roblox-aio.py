@@ -1,5 +1,4 @@
 import aiohttp
-import endpoints
 
 async def get_csrf_token(self, cookie: str):
 	cookies = {
