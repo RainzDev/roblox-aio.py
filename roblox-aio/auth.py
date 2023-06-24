@@ -1,6 +1,7 @@
 import aiohttp
 
 async def get_csrf_token(self, cookie: str):
+	"""Used for getting the x-csrf-token by using the logout endpoint."""
 	cookies = {
 		'.ROBLOSECURITY': cookie
 	}
