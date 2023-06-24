@@ -6,7 +6,7 @@ async def get_csrf_token(self, cookie: str):
 		'.ROBLOSECURITY': cookie
 	}
 	async with aiohttp.ClientSession() as session:
-		async with session.post(f"{endpoints.auth}/logout", cookies=cookies) as r:
+		async with session.post(f"https://auth.roblox.com/v2/logout", cookies=cookies) as r:
 			return r.headers['x-csrf-token']
 
 class authentication:
@@ -19,5 +19,5 @@ class authentication:
 	}
 	headers = {"x-csrf-token": await get_csrf_token(cookie=self.cookie)}
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"{endpoints.users}/users/authenticated", cookies=cookies, headers=headers) as response:
+            async with session.get(f"https://users.roblox.com/v1/users/authenticated", cookies=cookies, headers=headers) as response:
                 return await response.json()
