@@ -20,7 +20,7 @@ class User:
 	}
 	headers = {"x-csrf-token": await get_csrf_token(cookie=self.cookie)}
         async with aiohttp.ClientSession() as session:
-            async with session.patch(f"https://users.roblox.com/v1/users/{_id}/display-names") as response:
+            async with session.patch(f"https://users.roblox.com/v1/users/{_id}/display-names", json=data}) as response:
                 r = await response.json()
 		if "errors" in r["data"]:
                 	if r["data"]["errors"][0]["code"] == 4:
