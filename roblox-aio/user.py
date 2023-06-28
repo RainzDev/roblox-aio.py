@@ -1,17 +1,15 @@
 import aiohttp
 from .auth import authentication, get_csrf_token
-
-class InvalidDisplay(Exception):
-    def __init__(self, message):
-        self.message = message
-        super().__init__(self.message)
+from .errors import InvalidDisplay, CookieError
 
 class User:
-    def __init__(self, cookie):
+    def __init__(self, cookie: str=None):
         self.cookie = cookie
         
         
     async def change_display_name(self, name: str):
+	if not self.cookie:
+		raise CookieError
         data = {"newDisplayName": name}
         auth = authentication(cookie=self.cookie)
         _id = await auth.get_auth()['id']
