@@ -7,7 +7,8 @@ class User:
  	Attributes:
   		id: Grabs the current user ID
 		name: Grabs the current user name
-  		display_name: Grabs the current display name"""
+  		display_name: Grabs the current display name
+	"""
     def __init__(self, cookie: str=None):
         self.cookie = cookie
         
