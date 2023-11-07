@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='roblox-aio.py',
-    version='1.0.4',
+    version='1.0.9',
     url="https://github.com/RainzDev/roblox-aio.py",
     description='A Roblox API wrapper used for getting data from Roblox API.',
     long_description=long_description,
