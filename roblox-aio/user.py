@@ -9,6 +9,9 @@ class User:
 		
 		
 	async def change_display_name(self, name: str):
+		if self.cookie is None:
+			raise AuthenticationError("No cookie was set")
+
 		frame = inspect.currentframe()
 		if not self.cookie:
 			raise CookieError(f"Cookie is required for function '{inspect.getframeinfo(frame).function}'")
@@ -31,6 +34,6 @@ class User:
 					elif r["errors"][0]["code"] == 1:
 						raise InvalidDisplay(f"String size '{name}' is too short")
 					elif r["errors"][0]["code"] == 0:
-						raise AuthenticationError("Cookie is invalid or no cookie was set")
+						raise AuthenticationError("Cookie is invalid")
 				else:
 					return r
