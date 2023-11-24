@@ -15,7 +15,7 @@ class authentication:
 		
 	async def get_auth(self):
 		cookies = {
-		'.ROBLOSECURITY': self.cookie 
+			'.ROBLOSECURITY': self.cookie 
 		}
 		headers = {"x-csrf-token": await self.get_csrf_token()}
 		async with aiohttp.ClientSession() as session:
